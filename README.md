@@ -237,6 +237,35 @@ The shipped sample project files (`project.json`,
 against the four sample clips so you can run the pipeline immediately
 without going through `calibrate` / `markfield`.
 
+## Contributing / building from source
+
+Want to hack on Waruka or build the Windows bundle yourself?
+
+```bash
+git clone https://github.com/CaptainDreads/waruka.git
+cd waruka
+pip install -r requirements.txt        # all deps, incl. the CUDA wheels
+
+python -m waruka gui                    # run the GUI from source
+python -m waruka --help                 # CLI subcommands
+```
+
+The base `track → classify → campath → render` pipeline runs from a
+clone as-is. The optional interpolation / super-resolution stages need
+three model weights that aren't committed (too large for GitHub) — grab
+`waruka-weights-1.0.0.zip` from the
+[latest release](https://github.com/CaptainDreads/waruka/releases/latest)
+and extract it at the repo root, or see
+[`third_party/README.md`](third_party/README.md) for the per-file sources.
+
+- **Build the portable Windows `.exe` bundle:** [`BUILDING.md`](BUILDING.md).
+- **Contribution guidelines** (incl. the required DCO sign-off on every
+  commit): [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Note: the repo ships no sample footage — to run the pipeline you'll need
+your own panoramic video plus a one-time `calibrate` + `markfield` pass
+(see [Run on your own video](#run-on-your-own-video) above).
+
 ## Version
 
 This snapshot is `waruka_1.0`, based on the `Waruka_v0.16`

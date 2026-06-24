@@ -81,8 +81,10 @@ From a clean clone of the repo:
 # 1. Install Python deps (uses the CUDA 11.8 PyTorch wheel)
 pip install -r requirements.txt
 
-# 2. Confirm runtime assets are present (these are tracked in the repo;
-#    only re-fetch if you cloned with LFS skipped or pruned them)
+# 2. Confirm runtime assets are present. yolo11n.pt is committed to the
+#    repo; the three optional-stage model weights are NOT (each exceeds
+#    GitHub's file-size limit), so a fresh clone always needs to fetch
+#    them before a full build -- see "Fetching weights" below.
 python -c "from pathlib import Path; r = Path('.'); needed = [r/'yolo11n.pt', r/'third_party/film/film_net_fp16.pt', r/'third_party/rife/train_log/flownet.pkl', r/'third_party/realesrgan/weights/RealESRGAN_x2plus.pth']; [print('OK' if p.exists() else f'MISSING: {p}') for p in needed]"
 ```
 
@@ -167,14 +169,22 @@ working files to the directory it's run from.
 
 ## Fetching weights
 
-If `python scripts/build_exe.py` reports missing assets, fetch them by
-hand. Each is checked into `third_party/` upstream, but a contributor
-might have a thin clone:
+The three optional-stage model weights are **not** committed to the repo
+(each exceeds GitHub's 100 MB file limit), so every fresh clone needs to
+fetch them before a full build. `yolo11n.pt` *is* committed, so you only
+need it if you've pruned it. Two ways to get the weights:
+
+**Easiest -- the release bundle.** Download `waruka-weights-1.0.0.zip`
+from the [latest GitHub release](https://github.com/CaptainDreads/waruka/releases/latest)
+and extract it at the repo root; the three files land at the correct
+paths. (Same guidance as [`third_party/README.md`](third_party/README.md).)
+
+**Or fetch each from upstream:**
 
 | File | Source |
 |---|---|
-| `yolo11n.pt` | Auto-downloaded by ultralytics on first detection run; or `python -c "from ultralytics import YOLO; YOLO('yolo11n.pt')"` and copy from `~/.cache/ultralytics/`. |
-| `third_party/film/film_net_fp16.pt` | <https://github.com/dajes/frame-interpolation-pytorch/releases> (Style: pre-built FILM-Style TorchScript) |
+| `yolo11n.pt` | Committed to the repo. If pruned: auto-downloaded by ultralytics on first detection run, or `python -c "from ultralytics import YOLO; YOLO('yolo11n.pt')"` then copy from the ultralytics cache. |
+| `third_party/film/film_net_fp16.pt` | <https://github.com/dajes/frame-interpolation-pytorch/releases> (pre-built FILM-Style TorchScript) |
 | `third_party/rife/train_log/flownet.pkl` | <https://github.com/hzwer/Practical-RIFE> -- RIFE 4.25 model release |
 | `third_party/realesrgan/weights/RealESRGAN_x2plus.pth` | <https://github.com/xinntao/Real-ESRGAN/releases> |
 

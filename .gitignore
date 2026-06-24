@@ -54,6 +54,9 @@ campath_*.json
 *.mp4
 _viz_*.png
 
+# pipeline artefact output, created next to source videos when a job runs
+waruka_tracking/
+
 # scratch diagnostic images at repo root
 /_*.png
 

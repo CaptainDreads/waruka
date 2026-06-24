@@ -1,0 +1,38 @@
+# Waruka runtime + build dependencies.
+#
+# torch / torchvision must come from the CUDA 11.8 PyTorch index. The
+# `--extra-index-url` line below makes pip pick up the +cu118 wheels.
+# If you're on a machine without NVIDIA you'll still get the cu118
+# wheel, which won't be able to use CUDA at runtime -- that's fine for
+# building (PyInstaller just copies bytes) but Waruka will run with the
+# GPU-only code paths disabled.
+#
+# pip install -r requirements.txt
+
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+# Core ML / vision
+torch==2.7.1+cu118
+torchvision==0.22.1+cu118
+ultralytics==8.3.99
+opencv-python==4.10.0.84
+numpy==2.1.1
+scipy==1.15.2
+pillow==11.1.0
+filterpy==1.4.5
+
+# Video I/O
+imageio-ffmpeg==0.6.0
+PyNvVideoCodec==2.0.2
+nvidia-cuda-runtime-cu12==12.9.79
+
+# GUI
+PySide6==6.11.1
+
+# Utilities
+tqdm==4.67.1
+psutil==7.0.0
+reportlab==4.5.1
+
+# Build tooling
+pyinstaller==6.21.0

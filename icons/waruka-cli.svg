@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Waruka CLI">
+  <title>Waruka CLI</title>
+  <rect width="100" height="100" rx="24" fill="#1A9E4B"/>
+  <path d="M26 32 L40 71 L50 46 L60 71 L74 32" fill="none" stroke="#FDB913" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 32 L40 71 L50 46 L60 71 L74 32" fill="none" stroke="#CE1126" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 5"/>
+  <circle cx="26" cy="32" r="2.6" fill="#CE1126"/>
+  <circle cx="40" cy="71" r="2.6" fill="#CE1126"/>
+  <circle cx="50" cy="46" r="2.6" fill="#CE1126"/>
+  <circle cx="60" cy="71" r="2.6" fill="#CE1126"/>
+  <circle cx="74" cy="32" r="7" fill="#CE1126"/>
+  <!-- CLI terminal badge -->
+  <rect x="46" y="52" width="47" height="41" rx="9" fill="#1A9E4B"/>
+  <rect x="50" y="56" width="40" height="34" rx="6" fill="#141414"/>
+  <circle cx="56.5" cy="61.5" r="1.8" fill="#FF5F56"/>
+  <circle cx="62" cy="61.5" r="1.8" fill="#FFBD2E"/>
+  <circle cx="67.5" cy="61.5" r="1.8" fill="#27C93F"/>
+  <path d="M59 71 L64 76 L59 81" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M67 81 L77 81" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>

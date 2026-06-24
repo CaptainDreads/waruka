@@ -1,0 +1,21 @@
+# Normalise line endings: store text files as LF in the repository, so
+# Windows/macOS/Linux contributors don't produce CRLF churn in diffs.
+* text=auto eol=lf
+
+# Windows batch scripts must stay CRLF to run reliably.
+*.bat text eol=crlf
+
+# Binary assets: never normalise or diff as text.
+*.pt   binary
+*.pth  binary
+*.pkl  binary
+*.onnx binary
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.zip  binary
+*.pb   binary
